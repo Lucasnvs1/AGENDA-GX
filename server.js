@@ -1,3 +1,4 @@
+const authRoutes = require('./routes/auth');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
@@ -19,11 +20,13 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use('/', authRoutes);
     
 // Rota inicial (teste)
 app.get('/', (req, res) => {
-  res.send('Servidor rodando!');
+  res.render('index');
 });
+;
 
 // Inicia servidor
 app.listen(PORT, () => {
