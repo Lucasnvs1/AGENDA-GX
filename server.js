@@ -2,6 +2,7 @@ const authRoutes = require('./routes/auth');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const contactsRoutes = require('./routes/contacts');
 
 const app = express();
 const PORT = 3000;
@@ -11,18 +12,21 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
-app.use(express.urlencoded({extended: true})); // Ler dados de formulários
+app.use(express.urlencoded({ extended: true })); // Ler dados de formulários
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuração de sessão
 app.use(session({
-    secret: 'umsegredoseguro',
-    resave: false,
-    saveUninitialized: false
+  secret: 'umsegredoseguro',
+  resave: false,
+  saveUninitialized: false
 }));
+
+// rotas
 app.use('/', authRoutes);
-    
+app.use('/', contactsRoutes);
+
 // Rota inicial (teste)
 app.get('/', (req, res) => {
   res.render('index');
