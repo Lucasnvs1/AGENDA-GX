@@ -12,6 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
 app.use(express.urlencoded({extended: true})); // Ler dados de formulários
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuração de sessão
