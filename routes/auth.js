@@ -82,15 +82,15 @@ function isAuthenticated(req, res, next) {
     res.redirect('/login');
 }
 
-// rota do dashboard (protegida)
-router.get('/dashboard', isAuthenticated, (req, res) => {
-    res.render('dashboard', { user: req.session.user });
-});
+// // rota do dashboard (protegida)
+// router.get('/dashboard', isAuthenticated, (req, res) => {
+//     res.render('dashboard', { user: req.session.user });
+// });
 
-// rota protegida (dashboard)
-router.get('/dashboard', isAuthenticated, (req, res) => {
-    res.render('dashboard', { user: req.session.user });
-});
+// // rota protegida (dashboard)
+// router.get('/dashboard', isAuthenticated, (req, res) => {
+//     res.render('dashboard', { user: req.session.user });
+// });
 
 router.get('/logout', (req, res) => {
     req.session.destroy(() => {
