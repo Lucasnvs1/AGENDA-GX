@@ -1,21 +1,22 @@
 <%- include('partials/header') %>
 
 <h2>Bem-vindo, <%= user.email %>!</h2>
-<p>Essa é a sua área protegida da Agenda.</p>
 
 <h3>Seus contatos</h3>
 
-<% if (contacts && contacts.length > 0) { %>
+<% if (contacts.length === 0) { %>
+  <p>Nenhum contato cadastrado ainda.</p>
+<% } else { %>
   <ul>
     <% contacts.forEach(contact => { %>
       <li><%= contact.name %> - <%= contact.phone %></li>
     <% }) %>
   </ul>
-<% } else { %>
-  <p>Nenhum contato cadastrado ainda.</p>
 <% } %>
 
+<a href="/contacts/new">Adicionar novo contato</a> | 
 <a href="/logout">Sair</a>
 
 <%- include('partials/footer') %>
+
 

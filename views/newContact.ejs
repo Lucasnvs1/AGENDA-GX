@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<h2>Adicionar Novo Contado</h2>
+
+<form action="/contacts" method="POST">
+    <label>Nome</label>
+    <input type="text" name="name" required>
+
+    <label>Telefone</label>
+    <input type="text" name="phone" required>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="/dashboard">Voltar</a>
+
+<%- include('partials/footer') %>
