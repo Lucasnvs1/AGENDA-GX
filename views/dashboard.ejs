@@ -1,22 +1,49 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- CAMINHO CORRETO -->
+</head>
+<body>
+  <header>
+    <h1>Bem-vindo, <%= user.email %>!</h1>
+    <nav>
+      <a href="/contacts/new">➕ Novo Contato</a>
+      <a href="/logout">🚪 Sair</a>
+    </nav>
+  </header>
 
-<h2>Bem-vindo, <%= user.email %>!</h2>
+  <main>
+    <h2>Meus Contatos</h2>
 
-<h3>Seus contatos</h3>
-
-<% if (contacts.length === 0) { %>
-  <p>Nenhum contato cadastrado ainda.</p>
-<% } else { %>
-  <ul>
-    <% contacts.forEach(contact => { %>
-      <li><%= contact.name %> - <%= contact.phone %></li>
-    <% }) %>
-  </ul>
-<% } %>
-
-<a href="/contacts/new">Adicionar novo contato</a> | 
-<a href="/logout">Sair</a>
-
-<%- include('partials/footer') %>
-
-
+    <% if (contacts.length === 0) { %>
+      <p>Você ainda não tem contatos salvos.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% contacts.forEach((contact) => { %>
+            <tr>
+              <td><%= contact.name %></td>
+              <td><%= contact.phone %></td>
+              <td>
+                <a href="/contacts/edit/<%= contact.id %>">✏️ Editar</a>
+                <form action="/contacts/delete/<%= contact.id %>" method="POST" style="display:inline;">
+                  <button type="submit" onclick="return confirm('Tem certeza?')">🗑️ Excluir</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+</body>
+</html>

@@ -1,17 +1,29 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Novo Contato</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Adicionar Novo Contato</h1>
+    <nav>
+      <a href="/dashboard">⬅️ Voltar</a>
+      <a href="/logout">🚪 Sair</a>
+    </nav>
+  </header>
 
-<h2>Adicionar Novo Contado</h2>
+  <main>
+    <form action="/contacts" method="POST">
+      <label for="name">Nome:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
 
-<form action="/contacts" method="POST">
-    <label>Nome</label>
-    <input type="text" name="name" required>
+      <label for="phone">Telefone:</label><br>
+      <input type="text" id="phone" name="phone" required><br><br>
 
-    <label>Telefone</label>
-    <input type="text" name="phone" required>
-
-    <button type="submit">Salvar</button>
-</form>
-
-<a href="/dashboard">Voltar</a>
-
-<%- include('partials/footer') %>
+      <button type="submit">Salvar</button>
+    </form>
+  </main>
+</body>
+</html>

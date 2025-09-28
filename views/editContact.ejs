@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Contato</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Editar Contato</h1>
+    <nav>
+      <a href="/dashboard">← Voltar</a>
+      <a href="/logout">🚪 Sair</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- LINHA CORRIGIDA: use contact.id em vez de index -->
+    <form action="/contacts/update/<%= contact.id %>" method="POST">
+      <label for="name">Nome:</label><br>
+      <input type="text" id="name" name="name" value="<%= contact.name %>" required><br><br>
+
+      <label for="phone">Telefone:</label><br>
+      <input type="text" id="phone" name="phone" value="<%= contact.phone %>" required><br><br>
+
+      <button type="submit">💾 Salvar Alterações</button>
+    </form>
+  </main>
+</body>
+</html>
