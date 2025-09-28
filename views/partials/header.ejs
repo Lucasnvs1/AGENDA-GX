@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda de Contatos</title>
+    <title>Minha Agenda</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-
     <header>
         <nav>
             <h1>📒 Minha Agenda</h1>
-            <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Criar conta</a></li>
-            </ul>
+            <% if (user) { %>
+                <div class="user-menu">
+                    <!-- MUDAR user.email para user.name -->
+                    <span>Olá, <%= user.name %>!</span>
+                    <a href="/logout">Sair</a>
+                </div>
+            <% } %>
         </nav>
     </header>
+    <main>

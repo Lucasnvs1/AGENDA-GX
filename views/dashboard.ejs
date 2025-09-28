@@ -1,49 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="/css/style.css"> <!-- CAMINHO CORRETO -->
-</head>
-<body>
-  <header>
-    <h1>Bem-vindo, <%= user.email %>!</h1>
-    <nav>
-      <a href="/contacts/new">➕ Novo Contato</a>
-      <a href="/logout">🚪 Sair</a>
-    </nav>
-  </header>
+<%- include('partials/header') %>
+        <div class="dashboard-header">
+            <!-- MUDAR user.email para user.name -->
+            <h1>Bem-vindo, <%= user.name %>! 👋</h1>
+            <a href="/contacts/new" class="btn btn-primary">➕ Novo Contato</a>
+        </div>
 
-  <main>
-    <h2>Meus Contatos</h2>
-
-    <% if (contacts.length === 0) { %>
-      <p>Você ainda não tem contatos salvos.</p>
-    <% } else { %>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% contacts.forEach((contact) => { %>
-            <tr>
-              <td><%= contact.name %></td>
-              <td><%= contact.phone %></td>
-              <td>
-                <a href="/contacts/edit/<%= contact.id %>">✏️ Editar</a>
-                <form action="/contacts/delete/<%= contact.id %>" method="POST" style="display:inline;">
-                  <button type="submit" onclick="return confirm('Tem certeza?')">🗑️ Excluir</button>
-                </form>
-              </td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    <% } %>
-  </main>
-</body>
-</html>
+        <div class="contacts-section">
+            <h2>Meus Contatos</h2>
+            
+            <% if (contacts.length === 0) { %>
+                <p class="empty-state">Você ainda não tem contatos salvos.</p>
+            <% } else { %>
+                <div class="contacts-grid">
+                    <% contacts.forEach((contact) => { %>
+                        <div class="contact-card">
+                            <div class="contact-info">
+                                <h3><%= contact.name %></h3>
+                                <p><%= contact.phone %></p>
+                            </div>
+                            <div class="contact-actions">
+                                <a href="/contacts/edit/<%= contact.id %>" class="btn btn-sm">✏️ Editar</a>
+                                <form action="/contacts/delete/<%= contact.id %>" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">🗑️ Excluir</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+<%- include('partials/footer') %>

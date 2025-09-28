@@ -15,9 +15,9 @@ router.get('/register', (req, res) => {
   res.render('register');
 });
 
-// Registro
+// Registro - ATUALIZADO
 router.post('/register', async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body; // ADICIONAR name
 
   let users = [];
   if (fs.existsSync(usersFile)) {
@@ -30,13 +30,18 @@ router.post('/register', async (req, res) => {
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  users.push({ email, password: hashedPassword });
+  users.push({ 
+    name, // SALVAR O NOME
+    email, 
+    password: hashedPassword,
+    id: Date.now()
+  });
   fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
 
   res.redirect('/login');
 });
 
-// LOGIN - Versão ultra simplificada
+// Login - ATUALIZADO
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -47,20 +52,22 @@ router.post('/login', async (req, res) => {
     }
 
     const user = users.find(u => u.email === email);
-    if (!user) return res.send('Usuário não encontrado!');
+    if (!user) {
+      return res.send('Usuário não encontrado!');
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.send('Senha incorreta!');
+    if (!isMatch) {
+      return res.send('Senha incorreta!');
+    }
 
-    // SALVAR NA SESSÃO
+    // SALVAR NA SESSÃO COM NOME
     req.session.user = { 
       email: user.email,
-      id: user.id || Date.now()
+      name: user.name, // ADICIONAR NOME
+      id: user.id
     };
 
-    console.log('🔐 LOGIN: Usuário salvo na sessão');
-
-    // Redirecionar IMEDIATAMENTE
     res.redirect('/dashboard');
 
   } catch (error) {
