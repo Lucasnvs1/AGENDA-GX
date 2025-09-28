@@ -1,19 +1,32 @@
 <%- include('partials/header') %>
+    <div class="auth-page">
         <div class="auth-container">
             <div class="auth-card">
-                <h2>Login</h2>
+                <div class="auth-header">
+                    <h1>Minha Agenda</h1>
+                    <p>Entre na sua conta</p>
+                </div>
+                
                 <form action="/login" method="POST">
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="password">Senha:</label>
-                        <input type="password" id="password" name="password" required>
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" required placeholder="Sua senha">
                     </div>
-                    <button type="submit" class="btn-primary">Entrar</button>
+                    
+                    <button type="submit" class="btn btn-primary">Entrar na Agenda</button>
                 </form>
-                <p>Não tem conta? <a href="/register">Cadastre-se</a></p>
+                
+                <div style="text-align: center; margin-top: var(--space-5);">
+                    <p style="color: var(--text-muted);">Não tem conta? 
+                        <a href="/register" style="color: var(--primary); text-decoration: none; font-weight: 500;">Crie uma agora</a>
+                    </p>
+                </div>
             </div>
         </div>
+    </div>
 <%- include('partials/footer') %>

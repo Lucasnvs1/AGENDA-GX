@@ -1,6 +1,5 @@
 <%- include('partials/header') %>
         <div class="dashboard-header">
-            <!-- MUDAR user.email para user.name -->
             <h1>Bem-vindo, <%= user.name %>! 👋</h1>
             <a href="/contacts/new" class="btn btn-primary">➕ Novo Contato</a>
         </div>
@@ -9,19 +8,24 @@
             <h2>Meus Contatos</h2>
             
             <% if (contacts.length === 0) { %>
-                <p class="empty-state">Você ainda não tem contatos salvos.</p>
+                <div class="empty-state">
+                    <p>📝 Você ainda não tem contatos salvos.</p>
+                    <p style="margin-top: var(--space-3); color: var(--text-muted);">
+                        Clique em "Novo Contato" para adicionar seu primeiro contato!
+                    </p>
+                </div>
             <% } else { %>
                 <div class="contacts-grid">
                     <% contacts.forEach((contact) => { %>
                         <div class="contact-card">
                             <div class="contact-info">
                                 <h3><%= contact.name %></h3>
-                                <p><%= contact.phone %></p>
+                                <p>📞 <%= contact.phone %></p>
                             </div>
                             <div class="contact-actions">
                                 <a href="/contacts/edit/<%= contact.id %>" class="btn btn-sm">✏️ Editar</a>
                                 <form action="/contacts/delete/<%= contact.id %>" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">🗑️ Excluir</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este contato?')">🗑️ Excluir</button>
                                 </form>
                             </div>
                         </div>

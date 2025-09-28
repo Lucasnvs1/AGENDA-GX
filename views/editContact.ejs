@@ -1,18 +1,24 @@
 <%- include('partials/header') %>
         <div class="form-container">
-            <h1>Editar Contato</h1>
+            <div class="form-header">
+                <h1>✏️ Editar Contato</h1>
+                <p>Atualize as informações do contato</p>
+            </div>
+            
             <form action="/contacts/update/<%= contact.id %>" method="POST" class="contact-form">
                 <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" value="<%= contact.name %>" required>
+                    <label for="name">Nome completo</label>
+                    <input type="text" id="name" name="name" value="<%= contact.name %>" required placeholder="Ex: João Silva">
                 </div>
+                
                 <div class="form-group">
-                    <label for="phone">Telefone:</label>
-                    <input type="text" id="phone" name="phone" value="<%= contact.phone %>" required>
+                    <label for="phone">Telefone</label>
+                    <input type="text" id="phone" name="phone" value="<%= contact.phone %>" required placeholder="Ex: (11) 99999-9999">
                 </div>
+                
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Atualizar</button>
-                    <a href="/dashboard" class="btn">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">💾 Atualizar Contato</button>
+                    <a href="/dashboard" class="btn" style="background: var(--gray-200); color: var(--gray-700);">↩️ Voltar</a>
                 </div>
             </form>
         </div>

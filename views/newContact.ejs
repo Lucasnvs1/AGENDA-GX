@@ -1,18 +1,24 @@
 <%- include('partials/header') %>
         <div class="form-container">
-            <h1>Novo Contato</h1>
+            <div class="form-header">
+                <h1>➕ Novo Contato</h1>
+                <p>Adicione um novo contato à sua agenda</p>
+            </div>
+            
             <form action="/contacts" method="POST" class="contact-form">
                 <div class="form-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name">Nome completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Ex: João Silva">
                 </div>
+                
                 <div class="form-group">
-                    <label for="phone">Telefone:</label>
-                    <input type="text" id="phone" name="phone" required>
+                    <label for="phone">Telefone</label>
+                    <input type="text" id="phone" name="phone" required placeholder="Ex: (11) 99999-9999">
                 </div>
+                
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="/dashboard" class="btn">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">💾 Salvar Contato</button>
+                    <a href="/dashboard" class="btn" style="background: var(--gray-200); color: var(--gray-700);">↩️ Cancelar</a>
                 </div>
             </form>
         </div>

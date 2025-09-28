@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Agenda</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
-            <h1>📒 Minha Agenda</h1>
+        <nav class="container">
+            <a href="/dashboard" class="logo">
+                <span>📒</span>
+                Minha Agenda
+            </a>
             <% if (user) { %>
                 <div class="user-menu">
-                    <!-- MUDAR user.email para user.name -->
-                    <span>Olá, <%= user.name %>!</span>
+                    <span>Olá, <strong><%= user.name %></strong>!</span>
                     <a href="/logout">Sair</a>
                 </div>
             <% } %>
         </nav>
     </header>
-    <main>
+    <main class="container">

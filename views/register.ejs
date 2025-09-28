@@ -1,25 +1,37 @@
 <%- include('partials/header') %>
+    <div class="auth-page">
         <div class="auth-container">
             <div class="auth-card">
-                <h2>Criar Conta</h2>
+                <div class="auth-header">
+                    <h1>Minha Agenda</h1>
+                    <p>Crie sua conta</p>
+                </div>
+                
                 <form action="/register" method="POST">
-                    <!-- CAMPO NOVO -->
                     <div class="form-group">
-                        <label for="name">Nome:</label>
+                        <label for="name">Nome completo</label>
                         <input type="text" id="name" name="name" required placeholder="Seu nome completo">
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="password">Senha:</label>
-                        <input type="password" id="password" name="password" required>
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" required placeholder="Crie uma senha segura">
                     </div>
-                    <button type="submit" class="btn-primary">Cadastrar</button>
+                    
+                    <button type="submit" class="btn btn-primary">Criar minha conta</button>
                 </form>
-                <p>Já tem conta? <a href="/login">Faça login</a></p>
+                
+                <div style="text-align: center; margin-top: var(--space-5);">
+                    <p style="color: var(--text-muted);">Já tem conta? 
+                        <a href="/login" style="color: var(--primary); text-decoration: none; font-weight: 500;">Faça login</a>
+                    </p>
+                </div>
             </div>
         </div>
+    </div>
 <%- include('partials/footer') %>
